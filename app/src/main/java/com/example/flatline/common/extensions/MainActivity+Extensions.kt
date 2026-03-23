@@ -12,14 +12,14 @@ fun MainActivity.notifyUser(text: String, duration: Int = Toast.LENGTH_LONG) =
 fun MainActivity.registerNotificationChannel() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val channel = NotificationChannel(
-            "fcm_channel",
+            "fcm_channel_v2",
             "FCM Notifications",
             NotificationManager.IMPORTANCE_HIGH
         ).apply {
             description = "Firebase push notifications"
+            enableVibration(true)
         }
 
-        val manager = getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannel(channel)
+        getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
 }
